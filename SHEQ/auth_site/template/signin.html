@@ -1,0 +1,80 @@
+{% extends "auth_site/template/base.html" %}
+
+
+{%  block content %}
+
+<div>
+    {% for message in messages %}
+        <h3> {{ message }}</h3>
+    {% endfor %}
+</div>
+
+  <form action="{% url 'signin_view' %}" method="POST">
+        {% csrf_token %}
+
+        <div class="form_label_log">
+            <label class="form-label">Username</label>
+            <input class="form-control" type="text" name="username">
+        </div>
+        <div class="form_label_log">
+            <label class="form-label">Firstname</label>
+            <input class="form-control" type="text" name="firstname">
+        </div>
+
+        <div class="form_label_log">
+            <label class="form-label">Lastname</label>
+            <input class="form-control" type="text" name="lastname">
+        </div>
+        <div class="form_label_log">
+            <label class="form-label">Email address</label>
+            <input class="form-control" type="email" name= "email">
+        </div>
+
+        <div class="form_label_log">
+            <label class="form-label">Company name</label>
+                <select name="company" class="form-control">
+                    <option disabled selected>Select Company</option>
+                        {% for entity in company_list %}
+                            <option value="{{ entity.id }}">{{ entity.company_name }}</option>
+                        {% endfor %}
+            </select>
+        </div>
+
+        <div class="form_label_log">
+            <label class="form-label">Department name</label>
+                <select name="department" class="form-control">
+                    <option disabled selected>Select Department</option>
+                      {% for department in department_list %}
+                        <option value="{{ department.id }}">{{ department.name }}</option>
+                      {% endfor %}
+                </select>
+        </div>
+
+        <div class="form_label_log">
+            <label class="form-label">Job Title</label>
+        <select name="job_title" class="form-control">
+            <option disabled selected>Select Job title</option>
+              {% for jobtitle in jobtitle_list %}
+                <option  value="{{ jobtitle.id }}">{{ jobtitle.title_name }} </option>
+              {% endfor %}
+            </select>
+        </div>
+
+
+        <div class="form_label_log">
+            <label class="form-label">Password</label>
+            <input class="form-control" name=password1 type="password">
+        </div>
+
+        <div class="form_label_log">
+            <label class="form-label">Verify Password</label>
+            <input class="form-control"  name=password2  type="password">
+        </div>
+
+        <div class="d-xl-flex justify-content-xl-center form_label_log">
+            <input class="btn" type = "Submit" ></input>
+        </div>
+</form>
+{% endblock %}
+
+

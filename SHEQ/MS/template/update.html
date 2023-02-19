@@ -1,0 +1,69 @@
+{% extends 'MS/template/base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div>
+            <h1>{{main_doc.document_name}}</h1>
+        </div>
+
+        <div class="col offset-xl-0">
+            <form class="form_setup" action="{% url 'update_view' main_doc.id %}" method="POST">
+                {% csrf_token %}
+
+                <div>
+                    <label class="form-label">Purpose of the procedure?</label>
+                    <textarea class="form-control" name = "purpose"  >{{main_doc.purpose}}</textarea>
+                </div>
+
+                <div>
+                    <label class="form-label">Scope of the procedure?</label>
+                    <textarea class="form-control" name = "scope" >{{main_doc.scope}}</textarea>
+                </div>
+
+                <div class="form_label_log">
+                    <label class="form-label">1. Who will be responsible to implement ?</label>
+                    <select name="document_owner" class="form-control">
+                        <option selected disabled> {{main_doc.document_owner}} </option>
+                            {% for user in user_infor %}
+                                <option value="{{ user }}">{{ user.user }}</option>
+                            {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form_label_log">
+                        <label class="form-label">2. How frequent will the&nbsp;external and internal issues&nbsp;register be reviewed?</label>
+
+                    <select name="revision_frqcy" class="form-control">
+                            <option value = "{{main_doc.revision_frq}}" > {{main_doc.revision_frq}} </option>
+                                {% for frq in frqs %}
+                                    <option value="{{ frq.id }}">{{ frq.months }}</option>
+                                {% endfor %}
+                            </select>
+                </div>
+
+                <div>
+                     <input class="btn" type = Submit ></input>
+                </div>
+
+            </form>
+        </div>
+        <div>
+            <h4 style="text-align: left;">Details of the procedure<br></h4>
+                {% for detail in details%}
+                    {% if detail == "" %}
+                        <div>
+                            <a href="{% url 'update_detail_view' detail.id   %}"> {{ detail.title }} </a>
+                        </div>
+
+                    {% else %}
+                        <div>
+                        <a href="{% url ''  %}"> add details for this document </a>
+                        </div>
+
+                    {% endif %}
+                {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

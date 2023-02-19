@@ -1,0 +1,107 @@
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #f2f2f2;
+    text-align: center;
+    line-height: 60px
+}
+
+.container {
+    min-height: 100%;
+    position: sticky;
+    padding-top: 10px;
+    padding-bottom: 60px;
+    justify-content: center;
+    align-items: center;
+    height: 100%
+}
+
+.footer_text {
+    font-size: 16px;
+    text-align: center
+}
+
+h1 {
+    font-size: 35px;
+    text-align: center;
+    font-weight: 700
+}
+
+.navbar {
+    border-radius: 6px;
+    margin: 10px;
+    border-bottom: 1px solid rgba(0, 56, 255, .76)
+}
+
+.text-para {
+    font-size: 20px
+}
+
+.card_menu,
+.heading_tag {
+    margin: 10px
+}
+
+.form-label {
+    margin: 0
+}
+
+.form_label_log {
+    margin: 5px 5px 15px
+}
+
+.btn {
+    border-style: solid;
+    border-color: #000;
+    margin: 10px
+}
+
+.form_login {
+    max-width: 336px;
+    max-height: 603px
+}
+
+.div {
+    padding-top: 10%
+}
+
+p {
+    text-align: left
+}
+
+.h1_heading {
+    margin-bottom: 20%
+}
+
+.link_text {
+    text-align: center
+}
+
+.form_register {
+    max-width: 100%
+}
+
+.img_menu {
+    width: 100px
+}
+
+.status {
+    background: #e1dfdf;
+    border-style: solid;
+    border-radius: 5px;
+    font-size: 17px
+}
+
+.pro_heading {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-style: solid
+}
+
+#card {
+    width: 300px;
+}

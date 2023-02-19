@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>temp</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.min.css' %}">
+</head>
+
+<body style="margin-bottom: 20%;">
+    <!-- Start: body -->
+    <div class="container container_login" style="margin-top: 15%;">
+        <div class="row">
+            <!-- Start: content -->
+            <div class="col-md-12 col-lg-12 offset-md-0 offset-lg-0 m-auto form_login">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <!-- End: content -->
+        </div>
+    </div>
+    <!-- End: body -->
+    <!-- Start: Footer -->
+    <footer>
+        <div>
+            <p class="footer_text">MySHEQSpace @2023 powered by Hulela Projects</p>
+        </div>
+    </footer>
+    <!-- End: Footer -->
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/script.min.js' %}"></script>
+</body>
+
+</html>

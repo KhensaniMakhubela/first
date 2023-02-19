@@ -1,0 +1,94 @@
+{% extends 'MS/template/base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div>
+            <h1>CREATE NEW DOCUMENT</h1>
+        </div>
+
+        <div class="col offset-xl-0">
+            <form class="form_setup" action="{% url 'create_doc_view' %}" method="POST">
+                {% csrf_token %}
+
+
+                <div>
+                    <label class="form-label">Document name</label>
+                    <input class="form-control" name = "document_name" type="text" >
+                </div>
+
+
+                <div>
+                    <label class="form-label">Select ISO Clause associated with the Document</label>
+
+                    <select name="clause_name" class="form-control">
+                        <option disabled selected></option>
+                            {% for clause in clause_list %}
+                                <option value="{{ clause.id }}">{{ clause.clause_name }}</option>
+                            {% endfor %}
+                    </select>
+
+                </div>
+
+
+                <div>
+                    <label class="form-label">Select document type</label>
+
+                    <select name="document_type" class="form-control">
+                        <option disabled selected></option>
+                            {% for doc in doc_type %}
+                                <option value="{{ doc.id }}">{{ doc.type }}</option>
+                            {% endfor %}
+                    </select>
+
+                </div>
+
+
+                <div>
+                    <label class="form-label">Select the document owner</label>
+
+                    <select name="document_owner" class="form-control">
+                         <option disabled selected></option>
+                            {% for user in user_infor %}
+                                <option value="{{ user.user }}">{{ user.user }}</option>
+                            {% endfor %}
+                    </select>
+
+                </div>
+
+
+                <div>
+                    <label class="form-label">How frequent will this document be revised?</label>
+
+                    <select name="revision_frqcy" class="form-control">
+                        <option value= 3 > 12 </option>
+                            {% for frq in revision_frqcy %}
+                                <option value="{{ frq.id }}">{{ frq.months }}</option>
+                            {% endfor %}
+                    </select>
+
+                </div>
+
+
+                <div>
+                    <label class="form-label">Purpose of the procedure?</label>
+                    <textarea class="form-control" name = "purpose"  >{{main_doc.purpose}}</textarea>
+                </div>
+
+
+                <div>
+                    <label class="form-label">Scope of the procedure?</label>
+                    <textarea class="form-control" name = "scope" >{{main_doc.scope}}</textarea>
+                </div>
+
+
+                <div>
+                     <input class="btn" type = Submit ></input>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+{% endblock %}
