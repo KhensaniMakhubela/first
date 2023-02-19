@@ -1,5 +1,5 @@
 from datetime import datetime
-from .form import DocumentForm
+
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
@@ -75,7 +75,6 @@ def ms_update(request, id):
 @login_required  # Create document
 def ms_Doc_create(request):
 
-    form = DocumentForm()
     user = request.user
     company = User_added_info.objects.get(user=user)
     user_infor = User_added_info.objects.filter(company=company.company)
