@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>MS</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.min.css' %}">
+</head>
+
+<body>
+    <!-- Start: Navbar -->
+    <nav class="navbar navbar-light navbar-expand-md">
+        <div class="container-fluid"><a class="navbar-brand" href="#">MySHEQSpace</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end" id="navcol-1">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#" style="font-size: 20px;">Admin</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="font-size: 20px;">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End: Navbar -->
+    {%  block content %}
+    {% endblock %}
+    <!-- Start: body -->
+    <div class="container">
+        <div class="col offset-xl-0"></div>
+    </div>
+    <!-- End: body -->
+    <!-- Start: Footer -->
+    <footer>
+        <div>
+            <p class="footer_text">MySHEQSpace @2023 powered by Hulela Projects</p>
+        </div>
+    </footer>
+    <!-- End: Footer -->
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/script.min.js' %}"></script>
+</body>
+
+</html>

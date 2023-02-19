@@ -1,0 +1,29 @@
+{% extends 'MS/template/base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SHEQMS</title>
+</head>
+{%  block content %}
+
+<a href="{% url 'create_doc_view'  %}"> Create new Document </a>
+
+<div>
+
+    {% for procedure in procedure_list%}
+
+    <div class="card">
+        <a href="{% url 'procedure_view' procedure.id   %}"> {{ procedure.document_name }} </a>
+        <a href="{% url 'update_view' procedure.id   %}"> update </a>
+
+    </div>
+    {% endfor %}
+
+</div>
+
+
+{% endblock%}
+</body>
+</html>
