@@ -9,7 +9,8 @@
 
 {%  block content %}
 
- <a class="btn btn-outline-info" href="{% url 'create_doc_view'  %}"> Create new Document </a>
+ <a class="btn btn-outline-info" href="{% url 'createDocView'  %}"> Create new Document </a>
+ <a class="btn btn-outline-info" href="{% url 'process'  %}"> Process </a>
 
 <div>
 
@@ -17,7 +18,8 @@
 
     <div class="card">
         <a href="{% url 'procedure_view' procedure.id   %}"> {{ procedure.document_name }} </a>
-        <a href="{% url 'update_view' procedure.id   %}"> update </a></a>
+        <a href="{% url 'update_view' procedure.id   %}"> Revise </a></a>
+        <a href="{% url 'update_view' procedure.id   %}"> Obsolete </a></a>
     </div>
     <br>
     {% endfor %}

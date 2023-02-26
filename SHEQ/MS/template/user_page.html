@@ -15,7 +15,8 @@
             <H6> Document Type: {{ main_doc.document_type }} </H6>
             <H6> Document Owner: {{ main_doc.document_owner }} </H6>
             <H6> Revision Date: {{ main_doc.review_on }} </H6>
-            <H6>Revision No.: {{ main_doc.revision }} </H6>
+            <H6> Revision No.: {{ main_doc.revision }} </H6>
+            <H6> Revision No.: {{ main_doc.status }} </H6>
 
 
 
@@ -39,26 +40,37 @@
                 </div>
                 <!-- Start: procedure -->
 
+
                 {% for detail in details %}
 
-                <div>
-                    <div class="d-flex justify-content-between pro_heading">
-                        <div>
-                            <h5 class="d-lg-flex align-items-lg-center" style="text-align: left;"> {{ detail.title }}&nbsp;</h5>
-                            <h6 class="d-lg-flex align-items-lg-center" style="text-align: left;"> Responsible Person : {{ detail.responsible_person }}&nbsp;</h6>
-                        </div>
+                    <div>
+                        <div class="d-flex justify-content-between pro_heading">
+                            <div>
+                                <h5 class="d-lg-flex align-items-lg-center" style="text-align: left;"> {{ detail.title }}&nbsp;</h5>
+                                <h6 class="d-lg-flex align-items-lg-center" style="text-align: left;"> Responsible Person : {{ detail.responsible_person }}&nbsp;</h6>
+                            </div>
 
-                        <div>
-                            <h5 style="text-align: left;">Review: 12 month<br></h5>
-                            <h6 style="text-align: left;">Date: {{ detail.review_on }} <br></h6>
-                            <h6 style="text-align: left;">Status : {{ detail.status }} <br></h6>
+                            <div>
+                                <h5 style="text-align: left;">Review: 12 month<br></h5>
+                                <h6 style="text-align: left;">Date: {{ detail.review_on }} <br></h6>
+                                <h6 style="text-align: left;">Status : {{ detail.status }} <br></h6>
 
+                            </div>
                         </div>
-                    </div>
 
                         <p style="padding-right: 5px; padding-bottom: 5px"> {{ detail.details }}&nbsp; </p>
+
+
+                    {% empty %}
+
+                        <div>
+                            <P> No section created for this document, create new sections for this procedure, please click <a href="{% url 'createDocDetailview' main_doc.id %}"> here </a> to create new document</P>
+                        </div>
                     {% endfor %}
 
+                        <div>
+                            <P> click <a href="{% url 'createDocDetailview' main_doc.id %}"> here </a> to create new sections</P>
+                        </div>
 
                     <h5 style="text-align: left;">Records<br></h5>
                     <p style="padding-right: 5px;">1.&nbsp;&nbsp;<a href=""><span style="color: rgb(68, 114, 196);">""</span></a><br><br></p>

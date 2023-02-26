@@ -7,17 +7,24 @@
             <h1>{{main_doc.document_name}}</h1>
         </div>
         <div class="col offset-xl-0">
-            <form class="form_setup" action="{% url 'update_detail_view' main_doc.id %}" method = "POST" >
+            <form class="form_setup" action="{% url 'createDetailview'  %}" method="POST">
+                {% csrf_token %}
+
+
+
+                <div>
+                    <input  type="text" name="procedure_name" value = "{{ document_details.id }} "  hidden>
+                </div>
 
                 <div>
                     <label class="form-label">Section Title</label>
-                    <input class="form-control" type="text" name="title" value = {{details.title}}>
+                    <input class="form-control" type="text" name="title" >
                 </div>
 
                 <div class="form_label_log">
                     <label class="form-label">1. Who will be responsible to implement ?</label>
 
-                        <select name="company" class="form-control">
+                        <select name="responsible_person" class="form-control">
                         <option> {{details.responsible_person}} </option>
                             {% for detail in user_infor %}
                                 <option value="{{ detail.user }}">{{ detail.user }}</option>
@@ -29,21 +36,21 @@
 
                 <div class="form_label_log">
                     <label class="form-label">2. How frequent will the&nbsp;external and internal issues&nbsp;register be reviewed?</label>
-                        <select name="document_owner" class="form-control">
+                        <select name="revision_frq" class="form-control">
                             <option > {{details.revision_frq}} </option>
                                 {% for frq in frqs %}
-                                    <option value="{{ frq.months }}">{{ frq.months }}</option>
+                                    <option value="{{ frq.id }}">{{ frq.months }}</option>
                                 {% endfor %}
                         </select>
                 </div>
 
                 <div>
                     <label class="form-label">Details of the procedure?</label>
-                    <textarea class="form-control" name = "purpose"  >{{details.details}}</textarea>
+                    <textarea class="form-control" name = "details"  > </textarea>
                 </div>
 
                 <div>
-                    <button class="btn btn-primary" type="button">Update</button>
+                    <button class="btn btn-primary" type="submit">Add Section</button>
                 </div>
             </form>
         </div>

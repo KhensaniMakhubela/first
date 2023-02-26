@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from auth_site.models import Company
+from auth_site.models import Company, Process
 
 
 class ISO_Clauses(models.Model):
@@ -8,6 +8,7 @@ class ISO_Clauses(models.Model):
 
     def __str__(self):
         return self.clause_name
+
 
 class Doc_type(models.Model):
     type = models.CharField(max_length=20)
@@ -20,15 +21,16 @@ class Frequency(models.Model):
     def __str__(self):
         return str(self.months)
 
+
 class Status (models.Model):
     status = models.CharField(max_length=20)
     def __str__(self):
         return str(self.status)
 
+
 class Document(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
-    document_name = models.CharField(max_length=50)
-    # department = models.ManyToOneRel
+    document_name = models.ForeignKey(Process, on_delete=models.CASCADE, null= True)
     clause_name = models.ForeignKey(ISO_Clauses, on_delete=models.CASCADE)
     document_type = models.ForeignKey(Doc_type, on_delete=models.CASCADE, null = True)
     purpose = models.TextField()
@@ -40,7 +42,7 @@ class Document(models.Model):
     revision = models.IntegerField()
     status = models.ForeignKey(Status, on_delete=models.CASCADE, null=True)
     def __str__(self):
-        return str(self. document_name) +" - "+ str(self. company)
+        return str(self. document_name) + " - Rev no.: " + str(self. revision)
 
 
 class Doc_details(models.Model):
@@ -53,7 +55,7 @@ class Doc_details(models.Model):
     status = models.ForeignKey(Status, on_delete=models.CASCADE, null=True)
     details = models.TextField()
     def __str__(self):
-        name = str(self.procedure_name) +  " - " + str(self.title)
+        name = str(self.procedure_name)
         return name
 
 

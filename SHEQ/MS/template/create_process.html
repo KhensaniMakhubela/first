@@ -1,0 +1,43 @@
+{% extends 'MS/template/base.html' %}
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="col offset-xl-0">
+            <form class="form_setup" action="{% url 'process_create'  %}" method="POST">
+                {% csrf_token %}
+
+
+
+                <div>
+                    <input  type="text" value = "{{ company.company }} " hidden >
+                </div>
+
+
+                <div class="form_label_log">
+                    <label class="form-label"> Department </label>
+
+                        <select name="department" class="form-control">
+
+                            {% for detail in department %}
+                                <option value="{{ detail.id }}">{{ detail }}</option>
+                            {% endfor %}
+                        </select>
+                </div>
+
+                <div>
+                    <label class="form-label">Process</label>
+                    <input class="form-control"  type="text" name="process"  >
+                </div>
+
+
+
+                <div>
+                    <button class="btn btn-primary" type="submit">Add Section</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

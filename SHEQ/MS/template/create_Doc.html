@@ -8,17 +8,20 @@
         </div>
 
         <div class="col offset-xl-0">
-            <form class="form_setup" action="{% url 'create_doc_view' %}" method="POST">
+            <form class="form_setup" action="{% url 'createDocView' %}" method="POST">
                 {% csrf_token %}
-
 
                 <div>
                     <label class="form-label">Document name</label>
-                    <input class="form-control" name = "document_name" type="text" >
-                </div>
 
+                    <select name="document_name" class="form-control">
+                        <option disabled selected></option>
+                            {% for process in processes %}
+                                <option value="{{ process.id }}">{{ process.process }}</option>
+                            {% endfor %}
+                    </select>
 
-                <div>
+                </div>                <div>
                     <label class="form-label">Select ISO Clause associated with the Document</label>
 
                     <select name="clause_name" class="form-control">
