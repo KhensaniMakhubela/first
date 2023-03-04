@@ -6,11 +6,11 @@
 
 
         <div>
-            <h1>{{main_doc.document_name}}</h1>
+            <h1> Approve - {{main_doc.document_name}}</h1>
         </div>
 
         <div class="col offset-xl-0">
-            <form class="form_setup" action="{% url 'update_view' main_doc.id %}" method="POST">
+            <form class="form_setup" action="{% url 'approve_item' main_doc.id %}" method="POST">
                 {% csrf_token %}
 
                 <div>
@@ -47,7 +47,7 @@
 
 
                 <div>
-                     <input class="btn" type = Submit ></input>
+                     <input class="btn" type = Submit value = "Approve"></input>
                 </div>
 
             </form>

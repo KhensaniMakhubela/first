@@ -11,17 +11,35 @@
 
  <a class="btn btn-outline-info" href="{% url 'process_create'  %}"> create new process </a>
 
-<div>
-    <H1> Process</H1>
-    {% for process in processes%}
+<div class="container mt-3">
+  <h2>All Company Process - {{ processes.count }}</h2>
 
-    <div class="card">
-        <a href="{% url 'process' %}"> {{ processes}} </a>
-    </div>
-    <br>
-    {% endfor %}
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Department</th>
+        <th>Process</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
 
+        {% for process in processes%}
+      <tr>
+        <td> {{ process.department}} </td>
+          {% if process.status == 'Procedure' %}
+            <td>{{ process.id}} </td>
+          {% else %}
+            <td><a href="{% url 'processProcedure' process.id %}">{{ process.process}}</a> </td>
+          {% endif %}
+        <td> {{ process.status}} </td>
+      </tr>
+        {% endfor %}
+
+    </tbody>
+  </table>
 </div>
+
 
 
 {% endblock%}

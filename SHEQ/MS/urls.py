@@ -4,8 +4,12 @@ from. import views
 urlpatterns = [
     path('', views.ms_home_views, name = "MS_home_page"),
     path('View/<str:id>/',views.ms_procedures, name='procedure_view'),
+    path('processProcedure/<str:id>/', views.processProcedure, name='processProcedure'),
     path('update/<str:id>/',views.ms_update, name='update_view'),
     path('detail/<str:id>/review',views.ms_update_detail, name='update_detail_view'),
+
+    path('Approval_list/', views.approval_list, name= "approval_list"),
+    path('Approve_item/<str:id>/', views.approval_Doc, name="approve_item"),
 
     path('Process/', views.process, name='process'),
     path('Process/create/', views.process_create, name='process_create'),

@@ -2,25 +2,30 @@
 
 
 {% block content %}
-<div>
-
-</div>
 
 <!-- Start: body -->
-    <div class="container">
-        <div>
-
-            <H2> {{ main_doc.document_name }} </H2>
-            <H4> {{ main_doc.clause_name }} </H4>
-            <H6> Document Type: {{ main_doc.document_type }} </H6>
-            <H6> Document Owner: {{ main_doc.document_owner }} </H6>
-            <H6> Revision Date: {{ main_doc.review_on }} </H6>
-            <H6> Revision No.: {{ main_doc.revision }} </H6>
-            <H6> Revision No.: {{ main_doc.status }} </H6>
 
 
+        <page size="A4">
+               <div class="container">
+                   <div class="mt-2 p-5 bg-primary text-white rounded">
+                       <div class="row">
+                           <div class="col">
 
-        </div>
+                                <H2> {{ main_doc.document_name }} </H2>
+                                <H4> {{ main_doc.clause_name }} </H4>
+
+                           </div>
+
+                          <div class="col">
+                                <H6> Document Type: {{ main_doc.document_type }} </H6>
+                                <H6> Document Owner: {{ main_doc.document_owner }} </H6>
+                                <H6> Revision Date: {{ main_doc.review_on }} </H6>
+                                <H6> Revision No.: {{ main_doc.revision }} </H6>
+                          </div>
+                       </div>
+                   </div>
+
         <div class="col offset-xl-0">
             <form class="form_setup">
                 <div>
@@ -31,10 +36,7 @@
                     <h4 style="text-align: left;">Scope<br></h4>
                     <p style="padding-right: 5px;">{{ main_doc.scope }}</p>
                 </div>
-                <div>
-                    <h4 style="text-align: left;">Departments<br></h4>
-                    <p style="padding-right: 5px;">{{ main_doc }} </p>
-                </div>
+
                 <div>
                     <h4 style="text-align: left;"><strong>Details</strong><br></h4>
                 </div>
@@ -75,9 +77,14 @@
                     <h5 style="text-align: left;">Records<br></h5>
                     <p style="padding-right: 5px;">1.&nbsp;&nbsp;<a href=""><span style="color: rgb(68, 114, 196);">""</span></a><br><br></p>
                 </div>
-                <!-- End: procedure -->
+
             </form>
         </div>
-    </div>
+
+     </div>
+        </page>
+
+                <!-- End: procedure -->
+
 
 {% endblock %}

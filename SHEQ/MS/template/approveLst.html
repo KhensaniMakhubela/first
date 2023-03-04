@@ -1,0 +1,47 @@
+{% extends 'MS/template/base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SHEQMS</title>
+</head>
+
+{%  block content %}
+
+<div class="container mt-3">
+  <h2>Document to be approved </h2>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Document Name</th>
+        <th>ISO Clause</th>
+        <th>Document Owner</th>
+        <th>Revised Date</th>
+        <th>Revision</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        {% for document in documents%}
+      <tr>
+        <td> <a href="{% url 'approve_item' document.id %}">{{ document.document_name}} </td>
+        <td> {{ document.clause_name}} </a></td>
+        <td> {{ document.document_owner}} </td>
+         <td> {{ document.review_on}} </td>
+        <td> {{ document.revision}} </td>
+        <td>  </td>
+      </tr>
+        {% endfor %}
+
+    </tbody>
+  </table>
+</div>
+
+
+
+{% endblock%}
+</body>
+</html>

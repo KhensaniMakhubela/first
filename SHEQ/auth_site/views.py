@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .models import Job_title,Company, Department, User_added_info
 from django.contrib.auth import authenticate, login, logout
-
+from .forms import registerCompany
 
 # Create your views here.
 def home_views(request):
@@ -86,6 +86,12 @@ def signin_views(request):
         return render(request, "auth_site/template/signin.html", {"department_list":department, "company_list":company_info, "jobtitle_list": job_title })
 
 
+
+def registerCompany(request):
+
+    form = registerCompany()
+
+    return render(request, "auth_site/template/registerCompany.html", {"form":form})
 
 
 

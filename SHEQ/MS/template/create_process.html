@@ -3,12 +3,19 @@
 {% block content %}
 
     <div class="container">
+        {% if error %}
+        <div class="alert alert-warning alert-dismissible fade show">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong> {{error}}</strong>
+        </div>
+
+    {% endif %}
+
+
 
         <div class="col offset-xl-0">
             <form class="form_setup" action="{% url 'process_create'  %}" method="POST">
                 {% csrf_token %}
-
-
 
                 <div>
                     <input  type="text" value = "{{ company.company }} " hidden >
@@ -26,16 +33,16 @@
                         </select>
                 </div>
 
-                <div>
+                <div class="form_label_log">
                     <label class="form-label">Process</label>
                     <input class="form-control"  type="text" name="process"  >
                 </div>
 
 
-
                 <div>
                     <button class="btn btn-primary" type="submit">Add Section</button>
                 </div>
+
             </form>
         </div>
     </div>

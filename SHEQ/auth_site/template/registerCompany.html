@@ -1,0 +1,27 @@
+{% extends "auth_site/template/base.html" %}
+
+
+{%  block content %}
+
+<div>
+    {% for message in messages %}
+        <h3> {{ message }}</h3>
+    {% endfor %}
+</div>
+
+
+
+                <form class="form_login" action="{% url '' %}" method="POST">
+                    {% csrf_token %}
+
+                        <h3 class="text-center">LOGIN</h3>
+
+                        {{ form.as_p }}
+
+                    <div class="d-xl-flex justify-content-xl-center form_label_log">
+                        <input class="btn" type = Submit ></input>
+                    </div>
+
+                </form>
+
+{% endblock %}

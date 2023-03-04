@@ -8,3 +8,4 @@ admin.site.register(Doc_details)
 admin.site.register(Doc_type)
 admin.site.register(Frequency)
 admin.site.register(Status)
+

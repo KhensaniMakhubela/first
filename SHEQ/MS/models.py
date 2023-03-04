@@ -30,14 +30,14 @@ class Status (models.Model):
 
 class Document(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
-    document_name = models.ForeignKey(Process, on_delete=models.CASCADE, null= True)
+    document_name = models.ForeignKey(Process, on_delete=models.CASCADE)
     clause_name = models.ForeignKey(ISO_Clauses, on_delete=models.CASCADE)
     document_type = models.ForeignKey(Doc_type, on_delete=models.CASCADE, null = True)
     purpose = models.TextField()
     scope = models.TextField()
     document_owner = models.ForeignKey(User, on_delete= models.CASCADE)
     revision_frq = models.ForeignKey(Frequency, on_delete=models.CASCADE, null=True)
-    review_on = models.DateField()
+    review_on = models.DateField(null = True)
     approved_on = models.DateField(null = True)
     revision = models.IntegerField()
     status = models.ForeignKey(Status, on_delete=models.CASCADE, null=True)
@@ -46,7 +46,7 @@ class Document(models.Model):
 
 
 class Doc_details(models.Model):
-    procedure_name = models.ForeignKey(Document, on_delete=models.CASCADE)
+    procedure_name = models.ForeignKey(Process, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     responsible_person = models.ForeignKey(User, on_delete= models.CASCADE)
     review_on = models.DateField()

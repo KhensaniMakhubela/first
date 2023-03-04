@@ -62,11 +62,19 @@ class Status (models.Model):
 
 class Process(models.Model):
     company = models.ForeignKey(Company, on_delete= models.CASCADE, blank = False)
-    department = models.ForeignKey(Department, on_delete=models.CASCADE, blank=False)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
     process = models.CharField(max_length= 150)
-    status = models.ForeignKey(Status, on_delete=models.CASCADE, null=True)
+    status = models.ForeignKey(Status, on_delete=models.CASCADE)
+
     def __str__(self):
         return self.process
+    class Meta:
+        ordering = ['-department']
+        constraints = [
+            models.UniqueConstraint(fields=['department', 'process'], name='dpt_process')
+        ]
+
+
 
 class User_added_info(models.Model):
     user = models.ForeignKey(User, on_delete= models.CASCADE )
